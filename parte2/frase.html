@@ -2,7 +2,7 @@
 <html lang="it">
 	<head>
 		<meta charset="utf-8">
-		<title>Esempio di testo a rotazione</title>
+		<title>Animazione frase</title>
 		<meta name="description" content="Creazione di uno slogan con testo a rotazione sfruttando le animazioni CSS">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -12,20 +12,28 @@
 	</head>
     <body>
 		<main>
-			<div id="testoAlternato">
-				<p>
-					Realizziamo con cura, passione
-					<br>
-					attenzione, meticolosità, precisione
-					<br>
-					ed un pizzico di originalità
-					<span class="parole">
-						<i>interfacce web</i>
-						<i>single page app</i>
-						<i>app native</i>
-					</span>
-				</p>
+			<div class="contenitore">
+				<p>Realizziamo con cura, passione<br>
+				attenzione, meticolosità, precisione<br>
+			ed un pizzico di originalità <span class="parola" id="parola">Single page app</span></p>
 			</div>
+
+			<script>
+				const parole = ["Single page app", "Interfacce web", "App native"];
+        let index = 0;
+        const parolaElement = document.getElementById("parola");
+
+        function cambiaParola() {
+            parolaElement.classList.add("scompare");
+            setTimeout(() => {
+                index = (index + 1) % parole.length;
+                parolaElement.textContent = parole[index];
+                parolaElement.classList.remove("scompare");
+                parolaElement.classList.add("compare");
+            }, 500);
+        }
+        setInterval(cambiaParola, 3000);
+			</script>
 		</main>
     </body>
 </html>
